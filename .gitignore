@@ -1,0 +1,13 @@
+/oj-client-side/
+
+/oj-client-side/node_modules
+/oj-client-side/build
+/oj-client-side/.DS_Store
+/oj-client-side/.env.local
+/oj-client-side/.env.development.local
+/oj-client-side/.env.test.local
+/oj-client-side/.env.production.local
+
+
+/oj-server-side/.env
+/oj-server-side/node_modules
