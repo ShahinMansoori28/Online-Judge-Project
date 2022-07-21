@@ -1,0 +1,22 @@
+{
+  "name": "oj-server-side",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mine": "nodemon App.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bull": "^4.8.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.4.2",
+    "nodemon": "^2.0.18",
+    "uuid": "^8.3.2"
+  }
+}
