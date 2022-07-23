@@ -1,8 +1,14 @@
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
-const newId = uuidv4();
-const path = require("path");
-const { exec, spawn } = require("child_process");
+const { spawn } = require("child_process");
+const Docker = require("../DockerRun/startDocker");
+
+let containerId = null;
+Docker()
+  .then((res) => {
+    containerId = res;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 function compilationPy(testCasesFile, directory) {
   const {
@@ -12,12 +18,12 @@ function compilationPy(testCasesFile, directory) {
 
   return new Promise((resolve, reject) => {
     let passedTestCases = 0;
-    input.forEach((inp, index) => {
+    for(let index = 0; index < input.length; index++) {
       const child = spawn(`python "${directory}"`, [], {
         shell: true,
       });
 
-      child.stdin.write(inp);
+      child.stdin.write(input[index]);
       child.stdin.end();
       child.on("error", (error) => {
         reject({ msg: "on error", error: JSON.stringify(error) });
@@ -50,7 +56,7 @@ function compilationPy(testCasesFile, directory) {
       child.on("close", (code) => {
         console.log(`child process exited with code ${code}`);
       });
-    });
+    }
   });
 }
 
