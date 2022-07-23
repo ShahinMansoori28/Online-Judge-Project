@@ -16,48 +16,55 @@ function compilationPy(testCasesFile, directory) {
     output,
   } = require(`../testCases/input-output/${testCasesFile}`);
 
+  const newId = path.basename(directory).split(".")[0];
   return new Promise((resolve, reject) => {
-    let passedTestCases = 0;
-    for(let index = 0; index < input.length; index++) {
-      const child = spawn(`python "${directory}"`, [], {
-        shell: true,
-      });
-
-      child.stdin.write(input[index]);
-      child.stdin.end();
-      child.on("error", (error) => {
-        reject({ msg: "on error", error: JSON.stringify(error) });
-      });
-
-      child.stderr.on("data", (data) => {
-        reject({ msg: "on stderr", stderr: `${data}` });
-      });
-
-      child.stdout.on("data", (data) => {
-        const result = `${data}`.trim();
-        if (result !== output[index]) {
-          reject({
-            msg: `incorrect output at test case ${index + 1}`,
-            input: `${inp}`,
-            output: `${output[index]}`,
-            yourOutput: `${result}`,
+    exec(
+      `docker cp ${directory} ${containerId}:/${newId}.cpp`,
+      (error, stdout, stderr) => {
+        error && console.log(error);
+        stdout && console.log(stdout);
+        stderr && console.log(stderr);
+      
+        let passedTestCases = 0;
+        for(let index = 0; index < input.length; index++) {
+          const child = spawn(`python "${directory}"`, [], {
+            shell: true,
           });
-        } else {
-          passedTestCases += 1;
-          if (passedTestCases === input.length) {
-            resolve({
-              msg: "All test cases passed",
-              stdout: JSON.stringify(stdout),
+        
+          child.stdin.write(input[index]);
+          child.stdin.end();
+          child.on("error", (error) => {
+            reject({ msg: "on error", error: JSON.stringify(error) });
+          });
+        
+          child.stderr.on("data", (data) => {
+            reject({ msg: "on stderr", stderr: `${data}` });
+          });
+        
+          child.stdout.on("data", (data) => {
+            const result = `${data}`.trim();
+            if (result !== output[index]) {
+              reject({
+                msg: `incorrect output at test case ${index + 1}`,
+                input: `${inp}`,
+                output: `${output[index]}`,
+               yourOutput: `${result}`,
             });
-          }
+            } else {
+              passedTestCases += 1;
+              if (passedTestCases === input.length) {
+              resolve({
+                msg: "All test cases passed",
+                stdout: JSON.stringify(stdout),
+              });
+              }    
         }
-      });
-
-      child.on("close", (code) => {
-        console.log(`child process exited with code ${code}`);
-      });
-    }
-  });
+      
+        child.on("close", (code) => {
+          console.log(`child process exited with code ${code}`);
+        } );
+      })
+    })
 }
 
 module.exports = compilationPy;
