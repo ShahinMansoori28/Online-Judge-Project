@@ -15,16 +15,18 @@ async function getProblemById(id) {
   return problem;
 }
 
+async function getAllJob() {
+  return Job.find({}).sort({_id:-1});
+}
+
 const ValidId = (id) => ObjectId.isValid(id);
 
 const allProblemsController = async (req, res) => {
-  console.log("hii, all the problems are here");
   const problems = await getProblemAll();
   res.status(200).json(problems);
 };
 
 const detailOfProblemController = async (req, res) => {
-  console.log("hii, i am single problem");
   const id = req.params.id;
   try {
     if (!ValidId(id)) return res.status(404).json("check id, it's not valid");
@@ -38,14 +40,21 @@ const detailOfProblemController = async (req, res) => {
 
 const verdictonController = async (req, res) => {
   const { code, testCasesFile, language = "cpp" } = req.body;
-
+  const problemId = req.params.id;
   let job;
   try {
-    const filePath = await generateFile(language, code);
-    job = await new Job({ language, filePath, testCasesFile }).save();
+
+    const problem = await Model.findById(problemId);
+    const problemName = problem.name
+    const filePath = generateFile(language, code);
+    job = await new Job({ language, filePath, testCasesFile, problemId, problemName }).save();
     const jobId = job["_id"];
 
     addJobQueue(jobId);
+
+
+    problem["noOfSubmissions"] += 1;
+    await problem.save();
     return res.status(201).json({ success: true, jobId });
 
   } catch (err) {
@@ -53,8 +62,11 @@ const verdictonController = async (req, res) => {
   }
 };
 
-const leaderboardController = (req, res) => {
-  res.status(200).json("leaderboardController");
+const leaderboardController = async (req, res) => {
+  let job = await getAllJob();
+
+  console.log(job);
+  return res.status(201).json(job);
 };
 
 module.exports = {

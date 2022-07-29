@@ -4,7 +4,6 @@ import CodeEditor from "../CodeEditor";
 import api from "../../api/baseURl";
 import stubs from "./defaultStubbs";
 import moment from "moment";
-//import axios from "axios";
 
 function Question(props) {
   const { data, id } = props;
@@ -21,7 +20,6 @@ function Question(props) {
   }, [language]);
 
   const renderTimeDetails = () => {
-    //console.log("renderTimeDetails");
     if (!jobDetails) {
       return "";
     }
@@ -83,8 +81,6 @@ function Question(props) {
             console.error(error);
             clearInterval(intervalId);
           }
-
-          //console.log(JSON.parse(job.output));
         }, 1000);
       })
       .catch((err) => {
@@ -130,7 +126,7 @@ function Question(props) {
             value={language}
             onChange={(e) => {
               let res = window.confirm(
-                "WARNING: Switchin the language, will remove your code"
+                "WARNING: Switching the language, will remove your code"
               );
               if (res) {
                 setLanguage(e.target.value);
@@ -150,7 +146,7 @@ function Question(props) {
         {answer && (
           <div>
             <div>
-              <p>{status}</p>
+              <p>{response.status}</p>
               <p>{jobId && `JobID:${jobId}`}</p>
               <p>{renderTimeDetails()}</p>
             </div>

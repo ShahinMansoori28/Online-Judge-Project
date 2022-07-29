@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Problem from "./pages/Problem";
+import Leaderboard from "./pages/Leaderboard";
 import FirstRoute from "./pages/FirstRoute";
 import api from "./api/baseURl";
 
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<FirstRoute data={data} />} />
           <Route exact path="/problem/:id" element={<Problem />} />
+          <Route exact path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
     </BrowserRouter>
