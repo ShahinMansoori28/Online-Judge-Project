@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import Problem from "./pages/Problem";
 import Leaderboard from "./pages/Leaderboard";
 import FirstRoute from "./pages/FirstRoute";
 import api from "./api/baseURl";
+import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -20,8 +21,8 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <div>
-        <Navbar />
+      <div  className="app">
+        <NavBar />
         <Routes>
           <Route exact path="/" element={<FirstRoute data={data} />} />
           <Route exact path="/problem/:id" element={<Problem />} />

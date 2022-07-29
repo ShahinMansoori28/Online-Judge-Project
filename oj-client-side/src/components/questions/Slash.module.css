@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8rem;
+    margin: 0 1rem;
+    padding: 0 1.5rem;
+    background-color: hsla(203, 44%, 76%, 0.1);
+    border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1.8rem;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.underName {
+    display: flex;
+    font-family: 'Inconsolata', monospace;
+}
+
+.une {
+    margin-right: 1rem;
+}
+
+.btnbtn {
+    font-size: 1.2rem !important;
+    padding: 0.2rem 1.6rem !important;
+    text-transform: capitalize !important;
+    color: #0088ff !important;
+    border-color: #0088ff !important;
+    font-family: 'Inconsolata', monospace !important;
+}
+
+.btnbtncover {
+    margin-right: 1rem;
+}
+
+.une[diff="Easy"] {
+    color: #32c766;
+}
+
+.une[diff="Medium"] {
+    color: #db7100;
+}
+
+.une[diff="Hard"] {
+    color: #d11534;
+}

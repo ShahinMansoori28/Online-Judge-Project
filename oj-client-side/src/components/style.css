@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
+
+.navfontfamily {
+    font-weight: 600;
+    font-size: 0.1rem !important;
+}
+
+.nav_ac {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    border: unset;
+    font-size: 1.25rem;
+    color: black !important;
+    line-height: 2;
+    height: 40px;
+    z-index: 1000;
+    /* text-shadow: 0 0 2px #001716, 0 0 3px #03edf975, 0 0 5px #03edf975, 0 0 8px #03edf975; */
+}
+
+
+.myNavLink {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+    text-decoration: none;
+    position: relative;
+    transition: color 300ms ease 0.1s;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.16rem;
+    color: black;
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: transparent;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 200ms ease-in-out;
+}
+
+.myNavLink:hover,
+.myNavLink:active,
+.myNavLink:focus {
+    text-decoration-color: black;
+}
+
+.navbar {
+    /* background-color: rgb(18, 18, 18); */
+    z-index: 900 !important;
+    position: fixed !important;
+    padding: 0.3rem 0rem 0.3rem 2rem !important;
+    font-size: 1.2rem !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: -1px 3px 3px 0px rgba(9, 5, 29, 0.171) !important;
+}
+
+.navbar-toggler {
+    position: relative !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    backdrop-filter: blur(3px) !important;
+    box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.305);
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.305);
+    outline: 0 !important;
+}
+
+.navbar-nav .nav-link {
+    text-transform: uppercase !important;
+    color: black !important;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+}
+
+.nav-link {
+    padding: 0.8rem 1rem !important;
+}
+
+
+.navbar-nav .nav-item {
+    position: relative;
+    margin-left: 20px;
+}
+
+.navbar-nav .nav-item a {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding: 1rem 2rem !important;
+        font-size: 1.4rem !important;
+    }
+
+    .nav-link {
+        padding: 0.7rem 1rem !important;
+    }
+}
