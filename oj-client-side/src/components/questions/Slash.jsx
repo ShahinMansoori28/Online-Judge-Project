@@ -12,7 +12,10 @@ function Slash(props) {
                 <div className={classes.underName}>
                     <div className={classes.une} diff={props.difficulty}>{props.difficulty}</div>
                     <div className={classes.une}>Submitions : {props.noOfSubmissions}</div>
-                    <div className={classes.une}>Success : {props.noOfSuccess}</div>
+                    {props.noOfSubmissions !== 0 ?
+                        <div className={classes.une}>Success : {((props.noOfSuccess / props.noOfSubmissions) * 100).toFixed(2)}</div>
+                        : <div className={classes.une}>Success : {props.noOfSuccess}</div>
+                    }
                 </div>
             </div>
             <div className={classes.btnbtncover}>

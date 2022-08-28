@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.name {
+    font-weight: 600;
+    font-size: 2rem;
+    font-family: 'Arvo', serif;
+}
+
+.underName {
+    display: flex;
+    font-family: 'Inconsolata', monospace;
+}
+
+.une {
+    margin-right: 1rem;
+}
+
+.une[diff="Easy"] {
+    color: #32c766;
+}
+
+.une[diff="Medium"] {
+    color: #db7100;
+}
+
+.une[diff="Hard"] {
+    color: #d11534;
+}
+
+.ex {
+    margin-top: 1em;
+    font-size: 1.5em !important;
+}
+
+.p {
+    margin-top: 1em;
+}
+
+.example span {
+    font-weight: 700;
+    margin-right: 0.7em;
+}
+
+.sbtn {
+    border: 1px solid rgb(80, 132, 171, 0.9);
+    background-color: hsl(197, 71%, 75%);
+    border-radius: 0.25em;
+    padding: 0.2em 1.5em;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    transition: all 100ms ease-in-out;
+}
+
+.sbtn:hover {
+    background-color: hsl(197, 71%, 65%);
+}
+
+.disabledbtn,
+.disabledbtn:hover {
+    background-color: hsl(197, 71%, 60%) !important;
+    pointer-events: none !important;
+}
+
+.res {
+    margin-top: 1em;
+    border-top: 1px solid rgba(21, 0, 255, 0.15);
+    padding: 1em;
+}
+
+.sel {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    padding-bottom: 1em;
+}
+
+.sel label {
+    margin-right: 0.5em;
+    font-weight: 500;
+}
+
+.sel select {
+    font-size: 0.95em;
+    padding: 0 0.5em;
+}
+
+.res span {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-family: 'Arvo', serif;
+    margin-right: 0.6em;
+}

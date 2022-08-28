@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -40,23 +39,19 @@ function Showtable(props) {
 
   function createData(propsData) {
     let { problemName, submittedAt, status, completedAt, startedAt, language } = propsData;
-    if(status === 'error')
-      status = 'wrong answer';
-    if(!problemName)
+    if (status === 'error')
+      status = 'Rejected';
+    if (status === 'success')
+      status = 'Accepted';
+    if (!problemName)
       problemName = "Kadane";
     let ExecutionTime = new Date(completedAt) - new Date(startedAt);
-    if(isNaN(ExecutionTime))
+    if (isNaN(ExecutionTime))
       ExecutionTime = 1053;
     return { problemName, submittedAt, status, ExecutionTime, language };
   }
 
-  const rows =
-    data.map(createData);
-      
-    
-
-
-
+  const rows = data.map(createData);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -69,7 +64,7 @@ function Showtable(props) {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ maxHeight: '76vh' }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -93,10 +88,13 @@ function Showtable(props) {
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
+                        /* TODO : corrections in showing correct answer and its color ! */
+                        <TableCell
+                          style={{ color: value === 'Rejected' ? '#d11534' : (value === 'Accepted' ? '#32c766' : '') }}
+                          key={column.id}
+                          align={column.align}
+                        >
+                          {value}
                         </TableCell>
                       );
                     })}
@@ -120,25 +118,3 @@ function Showtable(props) {
 }
 
 export default Showtable
-
-
-
-
-
-
-
-
-
-
-// import React from 'react'
-
-// const Showtable = (props) => {
-//     const { data } = props;
-//     console.log(data);
-//   return (
-//     <div>
-//       <div>{data}</div>
-//     </div>
-//   )
-// }
-

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Showtable from "../components/questions/Showtable";
 import api from "../api/baseURl";
 
 const LeaderBoard = () => {
     const [job, setJob] = useState([]);
-    const navigate = useNavigate();
     useEffect(() => {
         api
             .get(`/explore/problems/leaderboard`)
@@ -18,16 +16,7 @@ const LeaderBoard = () => {
             });
     }, []);
 
-    return (
-        <div>
-            <div>
-                <button onClick={() => navigate(-1)}>Back</button>
-            </div>
-            <div>
-                <Showtable data={job} />
-            </div>
-        </div>
-    )
+    return <Showtable data={job} />
 }
 
 export default LeaderBoard

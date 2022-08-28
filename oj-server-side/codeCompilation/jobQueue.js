@@ -12,14 +12,14 @@ jobQueue.process(NUM_WORKERS, async ({ data }) => {
   console.log(data);
   const { id: jobId } = data;
   const job = await Job.findById(jobId);
-  
+
   if (job === undefined) {
     throw Error("job not found");
   }
   console.log("Fetched Job", job);
 
   try {
-    
+
     let response;
     job["startedAt"] = new Date();
     if (job.language === "cpp") {

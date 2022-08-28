@@ -1,0 +1,41 @@
+.wrapper {
+    display: flex;
+    padding-bottom: 7rem;
+}
+
+.prblms {
+    width: 85%;
+}
+
+.filterCover {
+    position: fixed;
+    right: 1rem;
+    flex-grow: 1;
+    width: 15%;
+    height: 80%;
+}
+
+.filter {
+    height: 100%;
+    width: 100%;
+    background-color: hsla(134, 44%, 76%, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.fHead {
+    padding: 0 0.5em 0.5em 0.5em;
+    border-bottom: 2px solid rgb(47, 47, 47, 0.15);
+    text-transform: capitalize;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 800;
+    font-size: 1.4em;
+    width: 100%;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.cb {
+    margin-left: 0.7em;
+}
