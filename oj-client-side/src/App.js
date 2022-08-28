@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import Barnav from "./components/Barnav";
 import Problem from "./pages/Problem";
 import Leaderboard from "./pages/Leaderboard";
 import FirstRoute from "./pages/FirstRoute";
@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <div  className="app">
-        <NavBar />
+        <Barnav/>
         <Routes>
           <Route exact path="/" element={<FirstRoute data={data} />} />
           <Route exact path="/problem/:id" element={<Problem />} />

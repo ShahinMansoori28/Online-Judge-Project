@@ -7,7 +7,7 @@ import './style.css';
 import { Link } from "react-router-dom";
 import MemoryIcon from '@mui/icons-material/Memory';
 
-function NavBar() {
+function Barnav() {
   const [expand, setExpand] = useState(false);
 
   return (
@@ -69,7 +69,7 @@ function NavBar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar >
+    </Navbar>
   );
   // return (<div>
   //   <div>
@@ -81,4 +81,4 @@ function NavBar() {
   // </div>);
 }
 
-export default NavBar;
+export default Barnav;
