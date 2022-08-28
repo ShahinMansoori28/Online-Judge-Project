@@ -7,3 +7,4 @@
 /oj-client-side/.env.production.local
 /oj-server-side/.env
 /oj-server-side/node_modules
+/oj-server-side/client/node_modules
